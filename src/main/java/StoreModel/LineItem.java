@@ -12,12 +12,12 @@ public class LineItem {
 
     private Product product;
     private int qty;
-    private double lineItemSubtotal;
+//    private double lineItemSubtotal;
 
     public LineItem(Product product, int qty) {
         setProduct(product);
         setQty(qty);
-        lineItemSubtotal = getCostBeforeDiscountLineTotal();
+//        lineItemSubtotal = getCostBeforeDiscountLineTotal();
     }
 
     public final Product getProduct() {

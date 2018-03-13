@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ashur</title>
         <!-- Bootstrap core CSS -->
@@ -29,10 +30,11 @@
                         </li>
                         <li>
                             <h:form styleClass="navSearchForm" >
-                                <h:inputText id='textSearch' value="#{productBean.textSearch}" alt="Search By Name" >
+                                <h:inputText id='searchString' value="#{productBean.searchString}" alt="Search Products By ID" >
                                     <f:ajax />
                                 </h:inputText>
-                                <h:commandButton value="Search" action="#{productBean.searchProducts}" />
+                                <h:commandButton value="Search" 
+                                                 action="#{productBean.searchProducts}" />
                             </h:form>
                         </li>   
                     </ul>
@@ -62,20 +64,20 @@
 
 
 
+        <center>
+            <h:link value="Shop Now" outcome="ProductList.xhtml"/>
+        </center>
+
+
+        <footer>
             <center>
-                <h:link value="Shop Now" outcome="ProductList.xhtml"/>
+                Copyright &copy; 2018~M.A.F.
             </center>
-            
+        </footer>
 
-            <footer>
-                <center>
-                    Copyright &copy; 2018~M.A.F.
-                </center>
-            </footer>
-
-            <!-- Bootstrap core JavaScript -->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </h:body>
 </html>

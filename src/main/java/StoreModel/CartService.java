@@ -9,8 +9,19 @@ import java.util.List;
  */
 public class CartService {
 
+    
     private List<LineItem> lineItems = Arrays.asList();
 
+    private Cart cart = new Cart(lineItems);
+    
+    public final Cart getCart() {
+        return cart;
+    }
+
+    public final void setCart(Cart cart) {
+        this.cart = cart;
+    }
+    
     public final List<LineItem> getLineItems() {
         return lineItems;
     }

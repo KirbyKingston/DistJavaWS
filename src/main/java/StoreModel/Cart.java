@@ -1,6 +1,9 @@
 package StoreModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -8,27 +11,31 @@ import java.util.ArrayList;
  */
 public class Cart {
 
-    private ArrayList<LineItem> cartItems;
-    private double cartTotal;
+    private List<LineItem> cartItems;
 
-    public Cart(ArrayList<LineItem> cartItems, double cartTotal) {
+    public Cart(List<LineItem> cartItems) {
         setCartItems(cartItems);
-        setCartTotal(cartTotal);
     }
 
-    public final ArrayList<LineItem> getCartItems() {
+    public final void addItem(Product p, int qty){
+		cartItems.add(new LineItem(p, qty));
+	}
+    
+    public final List<LineItem> getCartItems() {
         return cartItems;
     }
 
-    public final void setCartItems(ArrayList<LineItem> cartItems) {
+    public final void setCartItems(List<LineItem> cartItems) {
         this.cartItems = cartItems;
     }
 
-    public final double getCartTotal() {
-        return cartTotal;
-    }
+//    public final String getCartId() {
+//        return cartId;
+//    }
+//
+//    public final void setCartId(String cartId) {
+//        this.cartId = cartId;
+//    }
 
-    public final void setCartTotal(double cartTotal) {
-        this.cartTotal = cartTotal;
-    }
+    
 }
