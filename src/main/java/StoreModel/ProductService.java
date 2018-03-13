@@ -10,27 +10,29 @@ import java.util.List;
  */
 public class ProductService {
 
-    private List<Product> productList = Arrays.asList(
+    private final List<Product> productList = Arrays.asList(
             new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000),
-            new Product("A101", "THE SuperJet", 5000000)
+            new Product("A102", "THE SuperJet", 5000000),
+            new Product("A103", "THE SuperJet", 5000000),
+            new Product("A104", "THE SuperJet", 5000000),
+            new Product("A105", "THE SuperJet", 5000000),
+            new Product("A106", "THE SuperJet", 5000000),
+            new Product("A107", "THE SuperJet", 5000000),
+            new Product("A108", "THE SuperJet", 5000000),
+            new Product("A109", "THE SuperJet", 5000000),
+            new Product("A110", "THE SuperJet", 5000000)
     );
 
-    public final Product getProduct(String id) {
-        Product product = null;
-        for (Product p : productList) {
-            if (p.getId().equals(id)) {
-                product = p;
+    public Product getProduct(String sId) {
+        if (sId != null) {
+            for (Product p : productList) {
+                if (p.getId().equals(sId)) {
+                    return p;
+                }
             }
+
         }
-        return product;
+        return null;
     }
 
     public final List<Product> getAllProducts() {

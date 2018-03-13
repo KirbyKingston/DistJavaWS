@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Ashur</title>
         <!-- Bootstrap core CSS -->
@@ -41,32 +42,27 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="product">
-            <div class="name">
-                <h:outputText value="#{productBean.product.description}"/>
-            </div>
-            <div class="unitCost">
-                <h:outputText value="#{productBean.product.unitCost}">
-                    <f:convertNumber type="currency"/>
-                </h:outputText>
-            </div>
-            <br/>
-            <br/>
-            <div class="id">
-                <h:outputText value="#{productBean.product.id}"/>
-            </div>
-        </div>
+		    <div class="description">
+			<h:outputText value="#{productBean.product.description}"/>
+		    </div>
+		    <div class="unitPrice">
+			<h:outputText value="#{productBean.product.unitCost}">
+			    <f:convertNumber type="currency"/>
+			</h:outputText>
+		    </div>
+		    <br/>
+		    <div class="id">
+			<h:outputText value="#{productBean.product.id}"/>
+		    </div>
+		</div>
 
         <footer>
             <center>
                 Copyright &copy; 2018~M.A.F.
             </center>
         </footer>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </h:body>
 </html>
