@@ -14,6 +14,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
+                <div class="navbar-header">
                 <a class="navbar-brand" href="#">Ashur</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,8 +35,7 @@
                                 <h:inputText id='searchString' value="#{productBean.searchString}" alt="Search Products By ID" >
                                     <f:ajax />
                                 </h:inputText>
-                                <h:commandButton value="Search" 
-                                                 action="#{productBean.searchProducts}" />
+                                <h:commandButton value="Search" action="#{productBean.searchProducts}" />                                     
                             </h:form>
                         </li>   
                     </ul>
@@ -43,26 +43,36 @@
             </div>
         </nav>
 
-        <div class="product">
-		    <div class="description">
-			<h:outputText value="#{productBean.product.description}"/>
-		    </div>
-		    <div class="unitPrice">
-			<h:outputText value="#{productBean.product.unitCost}">
-			    <f:convertNumber type="currency"/>
-			</h:outputText>
-		    </div>
-		    <br/>
-		    <div class="id">
-			<h:outputText value="#{productBean.product.id}"/>
-		    </div>
-		</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="product">
+                        <div class="description">
+                            <h:outputText value="#{productBean.product.description}"/>
+                        </div>
+                        <div class="unitPrice">
+                            <h:outputText value="#{productBean.product.unitCost}">
+                                <f:convertNumber type="currency"/>
+                            </h:outputText>
+                        </div>
+                        <br/>
+                        <div class="id">
+                            <h:outputText value="#{productBean.product.id}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer>
             <center>
                 Copyright &copy; 2018~M.A.F.
             </center>
         </footer>
+
+        <script src="Scripts/jquery-3.3.1.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
 
     </h:body>
 </html>

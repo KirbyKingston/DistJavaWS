@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class Cart {
 
+    //private int cartId;
     private List<LineItem> cartItems;
 
     public Cart(List<LineItem> cartItems) {
@@ -29,11 +30,12 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-//    public final String getCartId() {
+    // Might need ID in future
+//    public final int getCartId() {
 //        return cartId;
 //    }
 //
-//    public final void setCartId(String cartId) {
+//    public final void setCartId(int cartId) {
 //        this.cartId = cartId;
 //    }
 
