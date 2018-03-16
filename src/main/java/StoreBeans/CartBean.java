@@ -18,14 +18,14 @@ import javax.faces.bean.SessionScoped;
 @Named(value = "cartBean")
 @SessionScoped
 public class CartBean {
-        private final CartService cartService = new CartService();
+        private final CartService cartService;
 	private final Cart cart;
 	private double total;
 	/**
 	 * Creates a new instance of ShoppingCartBean
 	 */
 	public CartBean() {
-		
+            cartService = new CartService();
             cart = cartService.getCart();
 	}
 
