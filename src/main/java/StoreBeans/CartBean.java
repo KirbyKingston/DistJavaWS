@@ -21,9 +21,7 @@ public class CartBean {
         private final CartService cartService;
 	private final Cart cart;
 	private double total;
-	/**
-	 * Creates a new instance of ShoppingCartBean
-	 */
+	
 	public CartBean() {
             cartService = new CartService();
             cart = cartService.getCart();
