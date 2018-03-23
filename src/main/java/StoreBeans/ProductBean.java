@@ -64,8 +64,6 @@ public final class ProductBean implements Serializable {
     }
 
     public String searchProductsById(){
-//		if(searchId == null)
-//			searchId = "S001";
 		System.out.println(searchString);
 		setProduct(productService.getProduct(searchString));
 		System.out.println(product);
