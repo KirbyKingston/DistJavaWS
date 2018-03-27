@@ -11,32 +11,32 @@ import java.util.Objects;
  */
 public class Cart {
 
-    private final List<Product> contents = new ArrayList<>();
+    private final List<Product> cartItems = new ArrayList<>();
 
-    public final List<Product> getContents() {
-        return contents;
+    public final List<Product> getCartItems() {
+        return cartItems;
     }
 
     public final int getItemsInCart() {
-        return contents.size();
+        return cartItems.size();
     }
 
     public final void add(Product product) {
-        contents.add(product);
+        cartItems.add(product);
     }
 
     public final void remove(Product product) {
-        contents.remove(product);
+        cartItems.remove(product);
     }
 
     public final void removeAll() {
-        contents.clear();
+        cartItems.clear();
     }
 
     @Override
     public final int hashCode() {
         int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.contents);
+        hash = 31 * hash + Objects.hashCode(this.cartItems);
         return hash;
     }
 
@@ -52,7 +52,7 @@ public class Cart {
             return false;
         }
         final Cart other = (Cart) obj;
-        if (!Objects.equals(this.contents, other.contents)) {
+        if (!Objects.equals(this.cartItems, other.cartItems)) {
             return false;
         }
         return true;
@@ -60,7 +60,7 @@ public class Cart {
 
     @Override
     public final String toString() {
-        return "Cart{" + "contents=" + contents + '}';
+        return "Cart{" + "contents=" + cartItems + '}';
     }
 
 }
