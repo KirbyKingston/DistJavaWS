@@ -28,7 +28,7 @@ public final class ProductBean implements Serializable {
     private List<Product> products;
     @ManagedProperty(name = "product", value = "")
     private Product product;
-    
+
     public ProductBean() {
         setProducts(productService.getAllProducts());
         System.out.println("new Bean");
@@ -48,8 +48,9 @@ public final class ProductBean implements Serializable {
     }
 
     public final void setProducts(List<Product> p) {
-        if(p != null)
- products = p;
+        if (p != null) {
+            products = p;
+        }
         System.out.println("products = " + products);
     }
 
@@ -58,21 +59,22 @@ public final class ProductBean implements Serializable {
     }
 
     public final void setSearchString(String search) {
-            searchString = search;
-            System.out.println("searchString = " + searchString);
+        searchString = search;
+        System.out.println("searchString = " + searchString);
     }
 
-    public String searchProductsById(){
+    public String searchProductsById() {
 //		if(searchId == null)
 //			searchId = "S001";
-		System.out.println(searchString);
-		setProduct(productService.getProduct(searchString));
-		System.out.println(product);
-		if(product == null)
-			return "ProductList";
-		return "ProductDetail";
-	}
-    
+        System.out.println(searchString);
+        setProduct(productService.getProduct(searchString));
+        System.out.println(product);
+        if (product == null) {
+            return "ProductList";
+        }
+        return "ProductDetail";
+    }
+
     public final String searchProducts() {
         setProduct(productService.getProduct(searchString));
         if (product == null) {
