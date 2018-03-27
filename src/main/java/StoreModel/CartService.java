@@ -11,7 +11,7 @@ public class CartService {
 
     private static final Map<String, Cart> cartItems = new HashMap<>();
 
-    public final Cart getContents(String sessionId) {
+    public final Cart getCartItems(String sessionId) {
         Cart cart = cartItems.computeIfAbsent(sessionId,
                 (String s) -> new Cart());
         return cart;
