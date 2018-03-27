@@ -11,33 +11,27 @@ import java.util.Objects;
  */
 public class Cart {
 
-    //private int cartId;
-    private List<LineItem> cartItems;
-
-    public Cart(List<LineItem> cartItems) {
-        setCartItems(cartItems);
-    }
-
-    public final void addItem(Product p, int qty){
-		cartItems.add(new LineItem(p, qty));
-	}
+    private final List<Product> contents = new ArrayList<>();
     
-    public final List<LineItem> getCartItems() {
-        return cartItems;
+    public List<Product> getContents(){
+        return contents;
     }
 
-    public final void setCartItems(List<LineItem> cartItems) {
-        this.cartItems = cartItems;
+    public int getItemsInCart(){
+        return contents.size();
     }
 
-    // Might need ID in future
-//    public final int getCartId() {
-//        return cartId;
-//    }
-//
-//    public final void setCartId(int cartId) {
-//        this.cartId = cartId;
-//    }
+    public void add(Product product){
+        contents.add(product);
+    }
+
+    public void remove(Product product){
+        contents.remove(product);
+    }
+
+    public void removeAll(){
+        contents.clear();
+    }
 
     
 }

@@ -1,38 +1,46 @@
 package StoreBeans;
 
 import StoreModel.Product;
-import StoreModel.ProductService;
 import StoreModel.Cart;
 import StoreModel.CartService;
-import StoreModel.LineItem;
-import java.util.List;
+import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Mitch
  */
-
 @Named(value = "cartBean")
 @SessionScoped
-public class CartBean {
-        private final CartService cartService = new CartService();
-	private final Cart cart;
-	private double total;
-	/**
-	 * Creates a new instance of ShoppingCartBean
-	 */
-	public CartBean() {
-		
-            cart = cartService.getCart();
-	}
+public class CartBean implements Serializable {
 
-	
-	public final List<LineItem> getItemsInCart(){
-            return cart.getCartItems();
-        }
-	
-	
+    private final String sessionId;
+    private final CartService cartService = new CartService();
+    private final Cart cart;
+    private double total;
+
+    public CartBean() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        sessionId = facesContext.getExternalContext().getSessionId(true);
+        cart = cartService.getContents(sessionId);
+    }
+    
+    public Cart getCart() {
+	    return cart;
+    }
+    
+    public int getItemsInCart(){
+        return cart.getItemsInCart();
+    }
+
+    public void addToCart(Product product){
+        cart.add(product);
+        cartService.update(sessionId, cart);
+    }
+
+    public void deleteFromCart(Product product){
+        cart.remove(product);
+    }
 }

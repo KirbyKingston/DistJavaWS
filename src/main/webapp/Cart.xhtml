@@ -43,6 +43,22 @@
             </div>
         </nav>
         
+        <h:form id="form">
+            <p:dataTable value="#{cartBean.cart.contents}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single">
+                <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
+                <p:column >
+                    <h:outputText value="#{p.id}" />
+                </p:column>
+                <p:column >
+                    <h:outputText value="#{p.description}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{p.unitCost}">
+                        <f:convertNumber type="currency"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
+        </h:form>
 
         <footer>
             <center>

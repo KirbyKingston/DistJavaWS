@@ -43,9 +43,8 @@
             </div>
         </nav>
 
-        <h:form>
-            <p:dataTable value="#{productBean.products}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single">
-                <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
+        <h:form id="form">
+            <p:dataTable value="#{productBean.products}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single"> <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
                 <p:column >
                     <h:outputText value="#{p.id}" />
                 </p:column>
@@ -57,9 +56,22 @@
                         <f:convertNumber type="currency"/>
                     </h:outputText>
                 </p:column>
+                <p:column>
+                    <p:commandButton value="Add" 
+                                     update=":form:cartQuantity"
+                                     actionListener="#{cartBean.addToCart(product)}"/>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Remove"
+                                     update=":form:cartQuantity"
+                                     actionListener="#{cartBean.deleteFromCart(product)}"/>
+                </p:column>
             </p:dataTable>
+            <div class="container">
+                <h:outputLabel for="cartQuantity" value="Cart:"/>
+                <h:outputText id="cartQuantity" value="#{cartBean.itemsInCart}"/>
+            </div>
         </h:form>
-
         <footer>
             <center>
                 Copyright &copy; 2018~M.A.F.

@@ -1,33 +1,26 @@
 package StoreModel;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
  * @author Mitch
  */
-public class CartService {
+public class CartService {    
 
-    
-    private List<LineItem> lineItems = Arrays.asList();
+    private static final Map<String, Cart> contents = new HashMap<>();
 
-    private Cart cart = new Cart(lineItems);
-    
-    public final Cart getCart() {
+    public Cart getContents(String sessionId){
+        //if shopping cart doesn't exist, it creates one
+        Cart cart = contents.computeIfAbsent(sessionId, 
+                (String s) -> new Cart());
         return cart;
     }
 
-    public final void setCart(Cart cart) {
-        this.cart = cart;
-    }
-    
-    public final List<LineItem> getLineItems() {
-        return lineItems;
-    }
-
-    public final void setLineItems(List<LineItem> lineItems) {
-        this.lineItems = lineItems;
+    public void update(String sessionId, Cart cart){
+        contents.put(sessionId, cart);
     }
 
 }
