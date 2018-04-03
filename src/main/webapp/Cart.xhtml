@@ -58,6 +58,10 @@
                     </h:outputText>
                 </p:column>
             </p:dataTable>
+            <div class="container">
+            <h:outputLabel for="cartQuantity" value="Cart:"/>
+            <h:outputText id="cartQuantity" value="#{cartBean.itemsInCart}"/>
+            </div>
         </h:form>
 
         <footer>
