@@ -29,8 +29,8 @@ public class ProductService {
 //    );
 
     ProductDAO pdSource = new ProductDAO();
-    private List<Product> productList;
-    productList= pdSource.getProducts();
+    private final List<Product> productList = pdSource.getProducts();
+    
     
     public Product getProduct(String sId) {
         if (sId != null) {
