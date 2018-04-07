@@ -21,7 +21,7 @@ public class ProductDAO {
 
         try {
             conn = ConnectionUtil.getConnection();
-            stmt = conn.prepareStatement("select * from products");
+            stmt = conn.prepareStatement("select * from PRODUCT");
             rs = stmt.executeQuery();
 
             List<Product> productList = new ArrayList<>();

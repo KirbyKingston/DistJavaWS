@@ -29,7 +29,7 @@ public final class ProductBean implements Serializable {
     @ManagedProperty(name = "product", value = "")
     private Product product;
 
-    public ProductBean() {
+    public ProductBean() throws Exception {
         setProducts(productService.getAllProducts());
         System.out.println("new Bean");
     }

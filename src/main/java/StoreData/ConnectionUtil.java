@@ -14,8 +14,7 @@ public class ConnectionUtil {
     public static Connection getConnection() throws Exception {
         Context initContext = new InitialContext();
         Context webContext = (Context) initContext.lookup("java:comp/env");
-
-        DataSource ds = (DataSource) webContext.lookup("jdbc/WebStore");
+        DataSource ds = (DataSource) webContext.lookup("jdbc/myProducts");
         return ds.getConnection();
     }
 
