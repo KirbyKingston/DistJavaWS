@@ -59,12 +59,12 @@
                 <p:column>
                     <p:commandButton value="Add" 
                                      update=":form:cartQuantity"
-                                     actionListener="#{cartBean.addItem(product)}"/>
+                                     actionListener="#{cartBean.addToCart(product)}"/>
                 </p:column>
                 <p:column>
                     <p:commandButton value="Remove"
                                      update=":form:cartQuantity"
-                                     actionListener="#{cartBean.deleteItem(product)}"/>
+                                     actionListener="#{cartBean.deleteFromCart(product)}"/>
                 </p:column>
             </p:dataTable>
             <div class="container">
