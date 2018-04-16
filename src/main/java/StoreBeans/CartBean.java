@@ -36,12 +36,12 @@ public class CartBean implements Serializable {
         return cart.getItemsInCart();
     }
 
-    public void addItem(Product product){
+    public void addToCart(Product product){
         cart.add(product);
         cartService.update(sessionId, cart);
     }
 
-    public void deleteItem(Product product){
+    public void deleteFromCart(Product product){
         cart.remove(product);
     }
 }
