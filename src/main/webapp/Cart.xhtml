@@ -44,7 +44,7 @@
         </nav>
         
         <h:form id="form">
-            <p:dataTable value="#{cartBean.cart.cartItems}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single">
+            <p:dataTable value="#{cartBean.c.cartItems}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single">
                 <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
                 <p:column >
                     <h:outputText value="#{p.id}" />

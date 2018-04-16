@@ -17,30 +17,30 @@ import org.primefaces.model.SelectableDataModel;
 public class CartBean implements Serializable {
 
     private final String sessionId;
-    private final CartService cartService = new CartService();
-    private final Cart cart;
+    private final CartService cs = new CartService();
+    private final Cart c;
     private double total;
 
     public CartBean() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         sessionId = facesContext.getExternalContext().getSessionId(true);
-        cart = cartService.getCartItems(sessionId);
+        c = cs.getCartItems(sessionId);
     }
     
-    public Cart getCart() {
-	    return cart;
+    public Cart getC() {
+	    return c;
     }
     
     public int getItemsInCart(){
-        return cart.getItemsInCart();
+        return c.getItemsInCart();
     }
 
     public void addItem(Product product){
-        cart.add(product);
-        cartService.update(sessionId, cart);
+        c.add(product);
+        cs.updateCart(sessionId, c);
     }
 
     public void deleteItem(Product product){
-        cart.remove(product);
+        c.remove(product);
     }
 }

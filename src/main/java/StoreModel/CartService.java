@@ -13,11 +13,11 @@ public class CartService {
 
     public final Cart getCartItems(String sessionId) {
         Cart cart = cartItems.computeIfAbsent(sessionId,
-                (String s) -> new Cart());
+                (String items) -> new Cart());
         return cart;
     }
 
-    public final void update(String sessionId, Cart cart) {
+    public final void updateCart(String sessionId, Cart cart) {
         cartItems.put(sessionId, cart);
     }
 
