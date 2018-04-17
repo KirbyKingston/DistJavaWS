@@ -9,20 +9,20 @@ import java.util.Map;
  */
 public class CartService {
 
-    private static final Map<String, Cart> cartItems = new HashMap<>();
+    private static final Map<String, Cart> contents = new HashMap<>();
 
-    public final Cart getCartItems(String sessionId) {
-        Cart cart = cartItems.computeIfAbsent(sessionId,
+    public final Cart getContents(String sessionId) {
+        Cart cart = contents.computeIfAbsent(sessionId,
                 (String s) -> new Cart());
         return cart;
     }
 
     public final void update(String sessionId, Cart cart) {
-        cartItems.put(sessionId, cart);
+        contents.put(sessionId, cart);
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "CartService{" + '}';
     }
 

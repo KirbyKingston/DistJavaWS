@@ -17,18 +17,14 @@ import org.primefaces.model.SelectableDataModel;
 public class CartBean implements Serializable {
 
     private final String sessionId;
-    private final CartService cartService = new CartService();
     private final Cart cart;
+    private final CartService cartService = new CartService();
     private double total;
 
     public CartBean() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         sessionId = facesContext.getExternalContext().getSessionId(true);
-        cart = cartService.getCartItems(sessionId);
-    }
-    
-    public Cart getCart() {
-	    return cart;
+        cart = cartService.getContents(sessionId);
     }
     
     public int getItemsInCart(){

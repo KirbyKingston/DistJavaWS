@@ -11,56 +11,25 @@ import java.util.Objects;
  */
 public class Cart {
 
-    private final List<Product> cartItems = new ArrayList<>();
-
-    public final List<Product> getCartItems() {
-        return cartItems;
+     private final List<Product> contents = new ArrayList<>();
+    
+    public List<Product> getContents(){
+        return contents;
     }
 
-    public final int getItemsInCart() {
-        return cartItems.size();
+    public int getItemsInCart(){
+        return contents.size();
     }
 
-    public final void add(Product product) {
-        cartItems.add(product);
+    public void add(Product product){
+        contents.add(product);
     }
 
-    public final void remove(Product product) {
-        cartItems.remove(product);
+    public void remove(Product product){
+        contents.remove(product);
     }
 
-    public final void removeAll() {
-        cartItems.clear();
+    public void removeAll(){
+        contents.clear();
     }
-
-    @Override
-    public final int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.cartItems);
-        return hash;
-    }
-
-    @Override
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cart other = (Cart) obj;
-        if (!Objects.equals(this.cartItems, other.cartItems)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public final String toString() {
-        return "Cart{" + "contents=" + cartItems + '}';
-    }
-
 }
