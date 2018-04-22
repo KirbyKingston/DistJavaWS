@@ -1,2 +1,21 @@
 /target/
 /src/main/resources/
+
+.DS_Store
+
+# Compiled class file
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.dat
+*.ctrl
+*.log
