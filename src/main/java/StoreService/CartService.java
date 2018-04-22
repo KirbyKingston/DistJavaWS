@@ -1,5 +1,7 @@
-package StoreModel;
+package StoreService;
 
+import StoreModel.Cart;
+import StoreModel.Product;
 import java.util.HashMap;
 import java.util.Objects;
 

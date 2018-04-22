@@ -1,8 +1,9 @@
-package StoreModel;
+package StoreService;
 
 import java.util.ArrayList;
 import java.util.List;
 import StoreData.ProductDAO;
+import StoreModel.Product;
 
 /**
  *

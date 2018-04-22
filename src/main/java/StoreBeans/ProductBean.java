@@ -1,6 +1,6 @@
 package StoreBeans;
 
-import StoreModel.ProductService;
+import StoreService.ProductService;
 import StoreModel.Product;
 import java.io.IOException;
 import java.io.Serializable;

@@ -2,7 +2,7 @@ package StoreBeans;
 
 import StoreModel.Product;
 import StoreModel.Cart;
-import StoreModel.CartService;
+import StoreService.CartService;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
