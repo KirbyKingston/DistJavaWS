@@ -3,37 +3,33 @@ package StoreBeans;
 import StoreModel.Product;
 import StoreModel.Cart;
 import StoreService.CartService;
-import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import java.io.IOException;
 import java.io.Serializable;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Mitch
  */
-@SessionScoped
-@ManagedBean(name = "cartBean")
-@Dependent
-public class CartBean implements Serializable {
+@Component("cartBean")
+@Scope("session")
+public final class CartBean implements Serializable {
 
-//    private final String sessionId;
-//    private final Cart cart;
+    @Autowired
+    private CartService cartService;
+
     private Product product;
-    private final CartService cartService;
     private double total;
     private Integer amount;
     private String currentProductId;
 
     public CartBean() {
-        cartService = new CartService();
-        setTotal();
     }
 
     public Integer getAmount() {
@@ -42,7 +38,7 @@ public class CartBean implements Serializable {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
-        System.out.println("amount = " + this.amount);
+        System.out.println("CartBean amount at line 39 = " + this.amount);
     }
 
     public Cart getCart() {
@@ -99,8 +95,8 @@ public class CartBean implements Serializable {
         }
     }
 
-    public void newAmount(ValueChangeEvent e) {
+    public void qtyChange(ValueChangeEvent e) {
         this.setAmount(Integer.valueOf(e.getNewValue().toString()));
-        throw new IllegalArgumentException("Amount set!");
+        throw new IllegalArgumentException();
     }
 }

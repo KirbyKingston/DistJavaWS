@@ -5,24 +5,25 @@ import StoreModel.Product;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Mitch
  */
-@SessionScoped
-@ManagedBean(name = "productBean")
-@Dependent
+@Component("productBean")
+@Scope("session")
 public final class ProductBean implements Serializable {
 
+    @Autowired
+    private ProductService productService;
+
     private String searchString;
-    private final ProductService productService = new ProductService();
     private List<Product> products;
     private Product product;
 
@@ -47,7 +48,7 @@ public final class ProductBean implements Serializable {
         if (p != null) {
             products = p;
         }
-        System.out.println("products = " + products);
+        System.out.println("ProductBean products at line 51 = " + products);
     }
 
     public final String getSearchString() {
@@ -56,7 +57,7 @@ public final class ProductBean implements Serializable {
 
     public final void setSearchString(String search) {
         searchString = search;
-        System.out.println("searchString = " + searchString);
+        System.out.println("ProductBean searchString at line 60 = " + searchString);
     }
 
 //    public String searchProductsById() throws Exception {
@@ -68,7 +69,6 @@ public final class ProductBean implements Serializable {
 //        }
 //        return "ProductDetail";
 //    }
-
     public final String searchProducts() throws Exception {
         List<Product> productSearchList = productService.findProducts(searchString);
         System.out.println(productSearchList);
