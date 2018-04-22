@@ -8,34 +8,34 @@
     <h:head>
         <title>Ashur</title>
         <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>  
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> 
+
     </h:head>
     <h:body>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Ashur</a>
+                <h:link class="navbar-brand" value="Ashur" outcome="Index.xhtml"/>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <h:link value="Home" outcome="Index.xhtml"/>
+                            <h:link class="btn btn-default navbar-btn" value="Home" outcome="Index.xhtml"/>
                         </li>
                         <li class="nav-item">
-                            <h:link value="Products" outcome="ProductList.xhtml"/>
+                            <h:link class="btn btn-default navbar-btn" value="Products" outcome="ProductList.xhtml"/>
                         </li>
                         <li class="nav-item">
-                            <h:link value="Cart" outcome="Cart.xhtml"/>
+                            <h:link class="btn btn-default navbar-btn" value="Cart" outcome="Cart.xhtml"/>
                         </li>
-                        <li>
+                        <li class="nav-item">
                             <h:form styleClass="navSearchForm" >
-                                <h:inputText id='searchString' value="#{productBean.searchString}" alt="Search Products By ID" >
-                                    <f:ajax />
+                                <h:inputText id='searchString' value="#{productBean.searchString}">
+                                    <f:ajax/>
                                 </h:inputText>
-                                <h:commandButton value="Search" 
-                                                 action="#{productBean.searchProducts}" />
+                                <h:commandButton value="Search" action="#{productBean.searchProducts}"/>                
                             </h:form>
                         </li>   
                     </ul>
@@ -43,8 +43,11 @@
             </div>
         </nav>
 
+        <br/><br/>
+
         <h:form id="form">
-            <p:dataTable value="#{productBean.products}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single"> <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
+            <p:dataTable value="#{productBean.products}" var="p" rowKey="#{p.id}" selection="#{productBean.product}" selectionMode="single"> 
+                <f:ajax event="rowSelect" listener="#{productBean.productDetail}"/>
                 <p:column >
                     <h:outputText value="#{p.id}" />
                 </p:column>
@@ -57,20 +60,21 @@
                     </h:outputText>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Add" 
-                                     update=":form:cartQuantity"
-                                     actionListener="#{cartBean.addToCart(product)}"/>
+                    <h:outputText value="Cart QTY: #{cartBean.cart.getQuantityFor(p)}"/>
                 </p:column>
-                <p:column>
-                    <p:commandButton value="Remove"
-                                     update=":form:cartQuantity"
-                                     actionListener="#{cartBean.deleteFromCart(product)}"/>
-                </p:column>
+                <!--                <p:column>
+                                    <h:inputText class="integer" value="#{cartBean.amount}" >
+                                                        <f:ajax execute="@this"/>
+                                    </h:inputText>
+                                    <h:commandButton type="button" value="Add" alt="Add">
+                                                        <f:ajax listener="#{cartBean.addToCart(product)}"/>
+                                    </h:commandButton>
+                                </p:column>-->
             </p:dataTable>
-            <div class="container">
-                <h:outputLabel for="cartQuantity" value="Cart:"/>
-                <h:outputText id="cartQuantity" value="#{cartBean.itemsInCart}"/>
-            </div>
+            <!--            <div class="container">
+                            <h:outputLabel for="cartQuantity" value="Cart:"/>
+                            <h:outputText id="cartQuantity" value="#{cartBean.amount}"/>
+                        </div>-->
         </h:form>
         <footer>
             <center>

@@ -1,7 +1,7 @@
 package StoreModel;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -9,21 +9,52 @@ import java.util.Map;
  */
 public class CartService {
 
-    private static final Map<String, Cart> cartItems = new HashMap<>();
+    private final Cart cart;
 
-    public final Cart getCartItems(String sessionId) {
-        Cart cart = cartItems.computeIfAbsent(sessionId,
-                (String s) -> new Cart());
+    public CartService() {
+        cart = new Cart(new HashMap<>());
+    }
+
+    public Cart getCart() {
         return cart;
     }
 
-    public final void update(String sessionId, Cart cart) {
-        cartItems.put(sessionId, cart);
+    public void addItem(Product p, int amount) {
+        cart.addProduct(p, amount);
+    }
+
+    public void setItem(Product p, int amount) {
+        cart.setProduct(p, amount);
+    }
+
+    @Override
+    public final int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.cart);
+        return hash;
+    }
+
+    @Override
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CartService other = (CartService) obj;
+        if (!Objects.equals(this.cart, other.cart)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public final String toString() {
-        return "CartService{" + '}';
+        return "CartService{" + "cart=" + cart + '}';
     }
 
 }

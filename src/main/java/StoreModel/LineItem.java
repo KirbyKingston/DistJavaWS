@@ -7,65 +7,38 @@ import java.util.Objects;
  * @author Mitch
  */
 public class LineItem {
+        private final static String MSG = "IAE at line";
+	private Product product;
+	private int amount;
+	
+	public LineItem(Product p, int amount){
+		setProduct(p);
+		setAmount(amount);
+	}
 
-    public final static String REQUIRED_MSG = "This is an invalid value.";
+	public final Product getProduct() {
+		return product;
+	}
 
-    private Product product;
-    private int qty;
-//    private double lineItemSubtotal;
+	private final void setProduct(Product product) {
+		if(product == null)
+			throw new IllegalArgumentException(MSG + " 25 in LineItem class for null product");
+		this.product = product;
+	}
 
-    public LineItem(Product product, int qty) {
-        setProduct(product);
-        setQty(qty);
-//        lineItemSubtotal = getCostBeforeDiscountLineTotal();
-    }
+	public final int getAmount() {
+		return amount;
+	}
 
-    public final Product getProduct() {
-        return product;
-    }
-
-    public final void setProduct(Product product) {
-        this.product = product;
-    }
-
-//    public final String displayLineItem() {
-//        return (product.getDescription() + product.getUnitCost() + getDiscountAmt() + getDiscountAmtLineTotal() + getYouSavedLineTotal());
-//    }
-    public final double getCostBeforeDiscount() {
-        return product.getUnitCost();
-    }
-
-    public final double getCostBeforeDiscountLineTotal() {
-        return product.getUnitCost() * qty;
-    }
-
-//    public final double getDiscountAmt() {
-//        return product.getDiscountStrategy().getDiscountAmt(product.getUnitCost(), qty);
-//    }
-//
-//    public final double getDiscountAmtLineTotal() {
-//        return getDiscountAmt() * qty;
-//    }
-//
-//    public final double getYouSavedLineTotal() {
-//        return getCostBeforeDiscountLineTotal() - getDiscountAmtLineTotal();
-//    }
-    public final int getQty() {
-        return qty;
-    }
-
-    public final void setQty(int qty) {
-        if (qty <= 0) {
-            throw new IllegalArgumentException(REQUIRED_MSG);
-        }
-        this.qty = qty;
-    }
+	public final void setAmount(int amount) {
+		this.amount = amount;
+	}
 
     @Override
     public final int hashCode() {
         int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.product);
-        hash = 13 * hash + this.qty;
+        hash = 17 * hash + Objects.hashCode(this.product);
+        hash = 17 * hash + this.amount;
         return hash;
     }
 
@@ -81,7 +54,7 @@ public class LineItem {
             return false;
         }
         final LineItem other = (LineItem) obj;
-        if (this.qty != other.qty) {
+        if (this.amount != other.amount) {
             return false;
         }
         if (!Objects.equals(this.product, other.product)) {
@@ -92,7 +65,7 @@ public class LineItem {
 
     @Override
     public final String toString() {
-        return "LineItem{" + "product=" + product + ", qty=" + qty + '}';
+        return "LineItem{" + "product=" + product + ", amount=" + amount + '}';
     }
-
-}
+        
+   }

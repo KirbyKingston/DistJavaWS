@@ -1,66 +1,47 @@
 package StoreModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 /**
  *
  * @author Mitch
  */
 public class Cart {
+    private final static String MSG = "IAE at line";
+    private Map<Product, Integer> products;
 
-    private final List<Product> contents = new ArrayList<>();
-
-    public final List<Product> getContents() {
-        return contents;
+    public Cart(Map<Product, Integer> products) {
+        setProducts(products);
     }
 
-    public final int getItemsInCart() {
-        return contents.size();
+    public final List<Product> getProducts() {
+        return new ArrayList(products.keySet());
     }
 
-    public final void add(Product product) {
-        contents.add(product);
+    public final int getQuantityFor(Product p) {
+        int i = products.get(p) == null ? 0 : products.get(p);
+        return i;
     }
 
-    public final void remove(Product product) {
-        contents.remove(product);
-    }
-
-    public final void removeAll() {
-        contents.clear();
-    }
-
-    @Override
-    public final int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.contents);
-        return hash;
-    }
-
-    @Override
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public final void setProducts(Map<Product, Integer> products) {
+        if (products == null) {
+            throw new IllegalArgumentException(MSG + " 30 in CART Class");
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cart other = (Cart) obj;
-        if (!Objects.equals(this.contents, other.contents)) {
-            return false;
-        }
-        return true;
+        this.products = products;
     }
 
-    @Override
-    public final String toString() {
-        return "Cart{" + "contents=" + contents + '}';
+    public final void setProduct(Product p, int q) {
+        products.put(p, q);
     }
 
+    public final void addProduct(Product p, int q) {
+        if (products.containsKey(p)) {
+            products.put(p, products.get(p) + q);
+        } else {
+            products.put(p, q);
+        }
+    }
+    
 }

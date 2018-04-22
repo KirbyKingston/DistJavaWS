@@ -5,9 +5,9 @@ import StoreModel.Product;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -18,20 +18,16 @@ import javax.faces.event.AjaxBehaviorEvent;
  */
 @SessionScoped
 @ManagedBean(name = "productBean")
-
+@Dependent
 public final class ProductBean implements Serializable {
 
-    @ManagedProperty(name = "searchString", value = "")
     private String searchString;
     private final ProductService productService = new ProductService();
-    @ManagedProperty(name = "products", value = "")
     private List<Product> products;
-    @ManagedProperty(name = "product", value = "")
     private Product product;
 
     public ProductBean() throws Exception {
         setProducts(productService.getAllProducts());
-        System.out.println("new Bean");
     }
 
     public final Product getProduct() {
@@ -63,21 +59,25 @@ public final class ProductBean implements Serializable {
         System.out.println("searchString = " + searchString);
     }
 
-    public String searchProductsById(){
-		System.out.println(searchString);
-		setProduct(productService.getProduct(searchString));
-		System.out.println(product);
-		if(product == null)
-			return "ProductList";
-		return "ProductDetail";
-	}
-    
-    public final String searchProducts() {
-        setProduct(productService.getProduct(searchString));
-        if (product == null) {
+//    public String searchProductsById() throws Exception {
+//        System.out.println(searchString);
+//        setProduct((Product) productService.findProducts(searchString));
+//        System.out.println(product);
+//        if (product == null) {
+//            return "ProductList";
+//        }
+//        return "ProductDetail";
+//    }
+
+    public final String searchProducts() throws Exception {
+        List<Product> productSearchList = productService.findProducts(searchString);
+        System.out.println(productSearchList);
+        if (productSearchList == null) {
+            System.out.println("null productSearchList");
             return "ProductList";
         }
-        return "ProductDetail";
+        System.out.println("good productSearchList");
+        return "ProductList";
     }
 
     public void productDetail(AjaxBehaviorEvent event) {
