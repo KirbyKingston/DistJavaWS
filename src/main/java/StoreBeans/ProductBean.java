@@ -47,7 +47,7 @@ public final class ProductBean implements Serializable {
         if (p != null) {
             products = p;
         }
-        System.out.println("products = " + products);
+        System.out.println("ProductBean products at line 51 = " + products);
     }
 
     public final String getSearchString() {
@@ -56,7 +56,7 @@ public final class ProductBean implements Serializable {
 
     public final void setSearchString(String search) {
         searchString = search;
-        System.out.println("searchString = " + searchString);
+        System.out.println("ProductBean searchString at line 60 = " + searchString);
     }
 
 //    public String searchProductsById() throws Exception {

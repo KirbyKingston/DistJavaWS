@@ -101,6 +101,6 @@ public class CartBean implements Serializable {
 
     public void newAmount(ValueChangeEvent e) {
         this.setAmount(Integer.valueOf(e.getNewValue().toString()));
-        throw new IllegalArgumentException("Amount set!");
+        throw new IllegalArgumentException();
     }
 }
