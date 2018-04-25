@@ -1,17 +1,30 @@
 package StoreModel;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author Mitch
  */
-public class Product {
+@Entity
+public class Product implements Serializable{
 
     public final static String REQUIRED_MSG = "This is a required field.";
 
+    @Id
+    @GeneratedValue
     private String id;
+    @Column(name = "description")
     private String description;
+    @Column(name = "unitCost")
     private double unitCost;
 
     public Product(String id, String description, double unitCost) {
@@ -19,34 +32,41 @@ public class Product {
         setDescription(description);
         setUnitCost(unitCost);
     }
+    
+    public Product(String id, Double unitCost){
+		this(id,"",unitCost);
+	}
+    
+    public Product(){ 
+    }
 
-    public final String getId() {
+    public String getId() {
         return id;
     }
 
-    public final void setId(String id) {
+    public void setId(String id) {
         if (id == null || id.isEmpty()) {
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
         this.id = id;
     }
 
-    public final String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public final void setDescription(String description) {
+    public void setDescription(String description) {
         if (description == null || description.isEmpty()) {
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
         this.description = description;
     }
 
-    public final double getUnitCost() {
+    public double getUnitCost() {
         return unitCost;
     }
 
-    public final void setUnitCost(double unitCost) {
+    public void setUnitCost(double unitCost) {
         if (unitCost < 0) {
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
@@ -54,14 +74,14 @@ public class Product {
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 5;
         hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public final boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -79,7 +99,7 @@ public class Product {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "Product{" + "id=" + id + ", description=" + description + ", unitCost=" + unitCost + '}';
     }
 

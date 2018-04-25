@@ -60,15 +60,6 @@ public final class ProductBean implements Serializable {
         System.out.println("ProductBean searchString at line 60 = " + searchString);
     }
 
-//    public String searchProductsById() throws Exception {
-//        System.out.println(searchString);
-//        setProduct((Product) productService.findProducts(searchString));
-//        System.out.println(product);
-//        if (product == null) {
-//            return "ProductList";
-//        }
-//        return "ProductDetail";
-//    }
     public final String searchProducts() throws Exception {
         List<Product> productSearchList = productService.findProducts(searchString);
         System.out.println(productSearchList);

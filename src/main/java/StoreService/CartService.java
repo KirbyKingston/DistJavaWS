@@ -4,13 +4,20 @@ import StoreModel.Cart;
 import StoreModel.Product;
 import java.util.HashMap;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  *
  * @author Mitch
  */
+@Service
+@Transactional
 public class CartService {
 
+    @Autowired
     private final Cart cart;
 
     public CartService() {

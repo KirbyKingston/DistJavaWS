@@ -1,15 +1,22 @@
 package StoreModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  *
  * @author Mitch
  */
-public class Cart {
+
+public class Cart implements Serializable {
+
     private final static String MSG = "IAE at line";
+
+    private String cartId;
+
     private Map<Product, Integer> products;
 
     public Cart(Map<Product, Integer> products) {
@@ -43,5 +50,5 @@ public class Cart {
             products.put(p, q);
         }
     }
-    
+
 }
