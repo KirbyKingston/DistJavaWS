@@ -1,7 +1,7 @@
 package StoreBeans;
 
-import StoreService.ProductService;
 import StoreModel.Product;
+import StoreService.ProductService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
