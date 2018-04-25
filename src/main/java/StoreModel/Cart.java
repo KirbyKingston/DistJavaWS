@@ -15,7 +15,7 @@ public class Cart implements Serializable {
 
     private final static String MSG = "IAE at line";
 
-    private String cartId;
+//    private String cartId;
 
     private Map<Product, Integer> products;
 
