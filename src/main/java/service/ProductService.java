@@ -1,13 +1,13 @@
-package StoreService;
+package service;
 
-import StoreModel.Product;
+import model.Product;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import StoreData.dao.IProductDAO;
+import data.dao.IProductDAO;
 
 /**
  *

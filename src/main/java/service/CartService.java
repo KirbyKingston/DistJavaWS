@@ -1,7 +1,7 @@
-package StoreService;
+package service;
 
-import StoreModel.Cart;
-import StoreModel.Product;
+import model.Cart;
+import model.Product;
 import java.util.HashMap;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;

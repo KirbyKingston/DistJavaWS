@@ -1,8 +1,8 @@
-package StoreBeans;
+package beans;
 
-import StoreModel.Cart;
-import StoreModel.Product;
-import StoreService.CartService;
+import model.Cart;
+import model.Product;
+import service.CartService;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;

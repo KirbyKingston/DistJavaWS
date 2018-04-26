@@ -1,4 +1,4 @@
-package StoreModel;
+package model;
 
 import java.util.Objects;
 

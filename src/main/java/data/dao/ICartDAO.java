@@ -1,6 +1,6 @@
-package StoreData.dao;
+package data.dao;
 
-import StoreModel.Cart;
+import model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
