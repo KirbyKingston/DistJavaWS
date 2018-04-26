@@ -28,12 +28,12 @@ public class PersistenceJNDIConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         LocalContainerEntityManagerFactoryBean emf
                 = new LocalContainerEntityManagerFactoryBean();
+        
         emf.setDataSource(dataSource());
         emf.setJpaVendorAdapter(new EclipseLinkJpaVendorAdapter());
-
         // Following required to avoid looking for persistence.xml
         emf.setPackagesToScan("DistJavaWS");
-        emf.setPersistenceUnitName("products-pu");
+        emf.setPersistenceUnitName("Product-pu");
         emf.setLoadTimeWeaver(new ReflectiveLoadTimeWeaver());
 
         Properties properties = new Properties();

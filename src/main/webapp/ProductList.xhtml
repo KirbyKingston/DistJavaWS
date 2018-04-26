@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ashur</title>
         <!-- Bootstrap core CSS -->
@@ -62,19 +61,7 @@
                 <p:column>
                     <h:outputText value="Cart QTY: #{cartBean.cart.getQuantityFor(p)}"/>
                 </p:column>
-                <!--                <p:column>
-                                    <h:inputText class="integer" value="#{cartBean.amount}" >
-                                                        <f:ajax execute="@this"/>
-                                    </h:inputText>
-                                    <h:commandButton type="button" value="Add" alt="Add">
-                                                        <f:ajax listener="#{cartBean.addToCart(product)}"/>
-                                    </h:commandButton>
-                                </p:column>-->
             </p:dataTable>
-            <!--            <div class="container">
-                            <h:outputLabel for="cartQuantity" value="Cart:"/>
-                            <h:outputText id="cartQuantity" value="#{cartBean.amount}"/>
-                        </div>-->
         </h:form>
         <footer>
             <center>
