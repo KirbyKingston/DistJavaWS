@@ -1,5 +1,4 @@
 /target/
-/src/main/resources/
 
 .DS_Store
 
@@ -19,3 +18,6 @@
 *.dat
 *.ctrl
 *.log
+/src/main/resources/Products/
+/src/main/resources/StoreData/
+/src/main/resources/names/

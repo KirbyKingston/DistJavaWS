@@ -1,6 +1,7 @@
-package beans;
-import model.Product;
-import service.ProductService;
+package DJStore.beans;
+
+import DJStore.model.Product;
+import DJStore.service.ProductService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -29,27 +30,27 @@ public final class ProductBean implements Serializable {
     public ProductBean() {
     }
 
-    public final Product getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public final void setProduct(Product p) {
+    public void setProduct(Product p) {
         product = p;
         System.out.println("product = " + product);
     }
 
-    public final List<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public final void setProducts(List<Product> p) {
+    public void setProducts(List<Product> p) {
         if (p != null) {
             products = p;
         }
         System.out.println("ProductBean products at line 51 = " + products);
     }
 
-    public final String getSearchString() {
+    public String getSearchString() {
         return searchString;
     }
 
@@ -58,7 +59,7 @@ public final class ProductBean implements Serializable {
         System.out.println("ProductBean searchString at line 60 = " + searchString);
     }
 
-    public final String searchProducts() throws Exception {
+    public String searchProducts() throws Exception {
         List<Product> productSearchList = productService.findProducts(searchString);
         System.out.println(productSearchList);
         if (productSearchList == null) {

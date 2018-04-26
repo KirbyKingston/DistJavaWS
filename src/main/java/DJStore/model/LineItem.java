@@ -1,4 +1,4 @@
-package model;
+package DJStore.model;
 
 import java.util.Objects;
 

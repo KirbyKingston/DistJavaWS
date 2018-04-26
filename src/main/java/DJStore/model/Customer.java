@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package DJStore.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -57,7 +57,7 @@ public class Customer implements Serializable {
     @Column(name = "EXTRANAME")
     private String extraname;
     @OneToMany(mappedBy = "fkcustomerid")
-    private List<Cart> cartList;
+    private List<ShoppingCart> cartList;
 
     public Customer() {
     }
@@ -105,11 +105,11 @@ public class Customer implements Serializable {
     }
 
     @XmlTransient
-    public List<Cart> getCartList() {
+    public List<ShoppingCart> getCartList() {
         return cartList;
     }
 
-    public void setCartList(List<Cart> cartList) {
+    public void setCartList(List<ShoppingCart> cartList) {
         this.cartList = cartList;
     }
 

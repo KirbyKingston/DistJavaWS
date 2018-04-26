@@ -1,4 +1,4 @@
-package model;
+package DJStore.model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;

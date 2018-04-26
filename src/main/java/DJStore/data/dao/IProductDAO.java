@@ -1,6 +1,6 @@
-package data.dao;
+package DJStore.data.dao;
 
-import model.Product;
+import DJStore.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
