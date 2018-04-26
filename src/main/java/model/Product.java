@@ -1,4 +1,4 @@
-package StoreModel;
+package model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
  *
  * @author Mitch
  */
-@Entity
+@Entity(name = "Product")
 public class Product implements Serializable{
 
     public final static String REQUIRED_MSG = "This is a required field.";

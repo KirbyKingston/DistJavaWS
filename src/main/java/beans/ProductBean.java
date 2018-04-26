@@ -1,7 +1,6 @@
-package StoreBeans;
-
-import StoreModel.Product;
-import StoreService.ProductService;
+package beans;
+import model.Product;
+import service.ProductService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -24,11 +23,10 @@ public final class ProductBean implements Serializable {
     private ProductService productService;
 
     private String searchString;
-    private List<Product> products;
     private Product product;
+    private List<Product> products;
 
-    public ProductBean() throws Exception {
-        setProducts(productService.getAllProducts());
+    public ProductBean() {
     }
 
     public final Product getProduct() {

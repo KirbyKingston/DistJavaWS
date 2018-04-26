@@ -1,4 +1,4 @@
-package StoreData;
+package data;
 
 import java.util.Properties;
 import javax.naming.NamingException;
@@ -47,7 +47,7 @@ public class PersistenceJNDIConfig {
 
     @Bean
     public DataSource dataSource() throws NamingException {
-        return (DataSource) new JndiTemplate().lookup("java:comp/env/jdbc/myProducts");
+        return (DataSource) new JndiTemplate().lookup("java:comp/env/jdbc/myStoreData");
     }
 
     @Bean
