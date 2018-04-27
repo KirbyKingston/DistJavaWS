@@ -1,6 +1,6 @@
 package DJStore.service;
 
-import DJStore.model.ShoppingCart;
+import DJStore.entity.Cart;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class ShoppingCartService {
+public class CartService {
 
-	private static final Map<String, ShoppingCart> contents = new HashMap<>();
+	private static final Map<String, Cart> contents = new HashMap<>();
 
-	public ShoppingCart getContents(String sessionId) {
-		ShoppingCart cart = contents.computeIfAbsent(sessionId,
-			(String t) -> new ShoppingCart());
+	public Cart getContents(String sessionId) {
+		Cart cart = contents.computeIfAbsent(sessionId,
+			(String t) -> new Cart());
 
 //		ShoppingCart cart = contents.computeIfAbsent(sessionId,
 //			new Function<String, ShoppingCart>() {
@@ -30,7 +30,7 @@ public class ShoppingCartService {
 		return cart;
 	}
 
-	public void update(String sessionId, ShoppingCart cart) {
+	public void update(String sessionId, Cart cart) {
 		contents.put(sessionId, cart);	
 	}
 

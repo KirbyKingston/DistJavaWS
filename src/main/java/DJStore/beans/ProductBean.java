@@ -1,6 +1,6 @@
 package DJStore.beans;
 
-import DJStore.model.Product;
+import DJStore.entity.Product;
 import DJStore.service.ProductService;
 import java.io.IOException;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("productBean")
 @Scope("session")
-public final class ProductBean implements Serializable {
+public class ProductBean implements Serializable {
 
     @Autowired
     private ProductService productService;
@@ -54,7 +54,7 @@ public final class ProductBean implements Serializable {
         return searchString;
     }
 
-    public final void setSearchString(String search) {
+    public void setSearchString(String search) {
         searchString = search;
         System.out.println("ProductBean searchString at line 60 = " + searchString);
     }

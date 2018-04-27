@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DJStore.model;
+package DJStore.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,11 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "CUSTOMER")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Customer_1.findAll", query = "SELECT c FROM Customer_1 c")
-    , @NamedQuery(name = "Customer_1.findByCustomerid", query = "SELECT c FROM Customer_1 c WHERE c.customerid = :customerid")
-    , @NamedQuery(name = "Customer_1.findByFirstname", query = "SELECT c FROM Customer_1 c WHERE c.firstname = :firstname")
-    , @NamedQuery(name = "Customer_1.findByLastname", query = "SELECT c FROM Customer_1 c WHERE c.lastname = :lastname")
-    , @NamedQuery(name = "Customer_1.findByExtraname", query = "SELECT c FROM Customer_1 c WHERE c.extraname = :extraname")})
+    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
+    , @NamedQuery(name = "Customer.findByCustomerid", query = "SELECT c FROM Customer c WHERE c.customerid = :customerid")
+    , @NamedQuery(name = "Customer.findByCustomerfname", query = "SELECT c FROM Customer c WHERE c.customerfname = :customerfname")
+    , @NamedQuery(name = "Customer.findByCustomerlname", query = "SELECT c FROM Customer c WHERE c.customerlname = :customerlname")})
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,19 +41,14 @@ public class Customer implements Serializable {
     private Integer customerid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 65)
-    @Column(name = "FIRSTNAME")
-    private String firstname;
+    @Size(min = 1, max = 30)
+    @Column(name = "CUSTOMERFNAME")
+    private String customerfname;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 65)
-    @Column(name = "LASTNAME")
-    private String lastname;
-    @Size(max = 50)
-    @Column(name = "EXTRANAME")
-    private String extraname;
-    @OneToMany(mappedBy = "fkcustomerid")
-    private List<ShoppingCart> cartList;
+    @Size(min = 1, max = 30)
+    @Column(name = "CUSTOMERLNAME")
+    private String customerlname;
 
     public Customer() {
     }
@@ -66,10 +57,10 @@ public class Customer implements Serializable {
         this.customerid = customerid;
     }
 
-    public Customer(Integer customerid, String firstname, String lastname) {
+    public Customer(Integer customerid, String customerfname, String customerlname) {
         this.customerid = customerid;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.customerfname = customerfname;
+        this.customerlname = customerlname;
     }
 
     public Integer getCustomerid() {
@@ -80,37 +71,20 @@ public class Customer implements Serializable {
         this.customerid = customerid;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getCustomerfname() {
+        return customerfname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setCustomerfname(String customerfname) {
+        this.customerfname = customerfname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getCustomerlname() {
+        return customerlname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getExtraname() {
-        return extraname;
-    }
-
-    public void setExtraname(String extraname) {
-        this.extraname = extraname;
-    }
-
-    @XmlTransient
-    public List<ShoppingCart> getCartList() {
-        return cartList;
-    }
-
-    public void setCartList(List<ShoppingCart> cartList) {
-        this.cartList = cartList;
+    public void setCustomerlname(String customerlname) {
+        this.customerlname = customerlname;
     }
 
     @Override
@@ -135,7 +109,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "StoreModel.Customer_1[ customerid=" + customerid + " ]";
+        return "DJStore.entity.Customer[ customerid=" + customerid + " ]";
     }
     
 }

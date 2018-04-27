@@ -1,4 +1,4 @@
-package DJStore.data;
+package DJStore.storeData;
 
 import java.util.Properties;
 import javax.naming.NamingException;
@@ -21,16 +21,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "DistJavaWS")
+@EnableJpaRepositories(basePackages = "DJStore")
 public class PersistenceJDBCConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
-        LocalContainerEntityManagerFactoryBean emf
-                = new LocalContainerEntityManagerFactoryBean();
+        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 
         emf.setDataSource(dataSource());
-        emf.setPackagesToScan("DistJavaWS");
+        emf.setPackagesToScan("DJStore");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
@@ -41,7 +40,6 @@ public class PersistenceJDBCConfig {
 
         emf.setJpaProperties(properties);
         emf.afterPropertiesSet();
-
         return emf;
     }
 

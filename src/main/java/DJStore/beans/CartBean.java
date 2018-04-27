@@ -1,10 +1,11 @@
 package DJStore.beans;
 
-import DJStore.model.Product;
-import DJStore.model.ShoppingCart;
-import DJStore.service.ShoppingCartService;
+import DJStore.entity.Product;
+import DJStore.entity.Cart;
+import DJStore.service.CartService;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,24 +17,25 @@ import org.springframework.stereotype.Component;
 @Scope("session")
 public class CartBean implements Serializable {
 
-	private final String sessionId;
-	private final ShoppingCart cart;
-	private final ShoppingCartService cartService = new ShoppingCartService();
+    @Autowired
+    private CartService cartService;
 
-	public CartBean() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		sessionId = facesContext.getExternalContext().getSessionId(true);
-		cart = cartService.getContents(sessionId);
-	}
+    private final String sessionId;
+    private final Cart cart;
 
-	public int getItemsInCart() {
-		return cart.getItemsInCart();
-	}
+    public CartBean() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        sessionId = facesContext.getExternalContext().getSessionId(true);
+        cart = cartService.getContents(sessionId);
+    }
 
-	public void addToCart(Product p) {
-		cart.add(p);
-		cartService.update(sessionId, cart);
-	}
+    public int getItemsInCart() {
+        return cart.getItemsInCart();
+    }
 
-	
+    public void addToCart(Product p) {
+        cart.add(p);
+        cartService.update(sessionId, cart);
+    }
+
 }

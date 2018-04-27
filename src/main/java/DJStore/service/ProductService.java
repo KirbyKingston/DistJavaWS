@@ -1,12 +1,11 @@
 package DJStore.service;
 
-import DJStore.data.dao.IProductDAO;
-import DJStore.model.Product;
+import DJStore.storeData.dao.IProductDAO;
+import DJStore.entity.Product;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.startsWith;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,10 +29,9 @@ public class ProductService {
     }
 
     public List<Product> findProducts(String search) {
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher("description", startsWith().ignoreCase());
+        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("description", ExampleMatcher.GenericPropertyMatchers.contains());
         Product p = new Product();
-        p.setDescription(search);
+        p.setProductDescription(search);
         return pDAO.findAll(Example.of(p, matcher));
     }
 
